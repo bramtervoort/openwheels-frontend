@@ -44,19 +44,21 @@ angular.module('owm.linksService', [])
   // Log usage, optionally append access token
   function process (link, useToken) {
     var out = link;
-    var token;
 
-    if (useToken) {
-      token = tokenService.getToken();
-      if (token && token.accessToken) {
-        $log.debug('external link + access token', link);
-        out = out + '?access_token=' + token.accessToken;
-      } else {
-        $log.debug('external link: token not available', link);
-      }
-    } else {
-      $log.info('external link', link);
-    }
+    // TEMPORARILY DISABLED:
+
+    // var token;
+    // if (useToken) {
+    //   token = tokenService.getToken();
+    //   if (token && token.accessToken) {
+    //     $log.debug('external link + access token', link);
+    //     out = out + '?access_token=' + token.accessToken;
+    //   } else {
+    //     $log.debug('external link: token not available', link);
+    //   }
+    // } else {
+    //   $log.info('external link', link);
+    // }
 
     return out;
   }
