@@ -31,8 +31,8 @@ angular.module('alertService', [])
     $rootScope.loader = loadersByScope[Object.keys(loadersByScope)[0]];
   };
 
-  alertService.add = function(type, msg, timeout) {
-    $rootScope.alerts.push({'type': type, 'msg': msg});
+  alertService.add = function(type, msg, timeout, url) {
+    $rootScope.alerts.push({'type': type, 'msg': msg, 'url': url});
     if(timeout) {
       $timeout(function() {
         alertService.closeAlert( $rootScope.alerts.length-1 );
@@ -42,8 +42,9 @@ angular.module('alertService', [])
 
   alertService.addError = function (err) {
     var level   = err.level   || 'danger';
+    var url     = err.url;
     var message = err.message || $translate.instant('GLOBAL.MESSAGE.GENERIC_ERROR');
-    alertService.add(level, message, 8000);
+    alertService.add(level, message, 8000, url);
   };
 
   alertService.addSaveSuccess = function () {

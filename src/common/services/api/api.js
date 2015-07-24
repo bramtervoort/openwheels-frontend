@@ -105,6 +105,7 @@ angular.module('api', [])
 
       rpcError = new Error();
       rpcError.message = res.data.error.message;
+      rpcError.url = res.data.error.url;
       rpcError.level = ['danger', 'info', 'warning'].indexOf(res.data.error.level) >= 0 ? res.data.error.level : 'danger';
       rpcError.status = res.status;
       rpcError.config = res.config;

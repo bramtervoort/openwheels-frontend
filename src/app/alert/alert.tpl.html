@@ -7,6 +7,7 @@
       <i ng-if="alert.type==='info'" class="fa fa-fw fa-info-circle"></i>
       <span ng-if="!alert.msg" ng-bind="'GLOBAL.MESSAGE.GENERIC_ERROR' | translate"></span>
       {{ alert.msg }}&nbsp;
+      <a ng-if="alert.url" href="{{alert.url}}">meer informatie</a>
     </alert>
   </div>
 </div>
